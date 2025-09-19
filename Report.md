@@ -23,7 +23,7 @@ Completely answer the report questions below. Make sure to double check the fina
 
 3. What is the difference between the heap and stack when related to memory allocation and management?
 
-
+   The stack takes care of memory on its own when it comes to local variables and function calls. The heap needs to be managed memory manually.
 
 4. Take the following code:
    ```c
@@ -47,7 +47,10 @@ Completely answer the report questions below. Make sure to double check the fina
    ```
    Would the code run correctly? Even if it does compile, what would be some potential runtime issues? After answering your thoughts, put the output of a run below (you may need to run it a few times).
    ```text
-   output here
+   q4test.c:10:14: warning: address of stack memory associated with local variable 'pt' returned [-Wreturn-stack-address]
+   10 |      return &pt;
+      |              ^~
+   1 warning generated.
    ```
 
    Fix the code in the following block:
