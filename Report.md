@@ -6,7 +6,9 @@ Completely answer the report questions below. Make sure to double check the fina
 
 
 1. What is the difference between a standard numeric type (int, float, double) and a pointer?
-   
+  int holds whole numbers, float holds single precision decimals numbers, and double holds double precision decimals numbers. They all store 
+  actual value. Pointer stores the memory address of another variable, and it doesn't store actual value but location in memory.
+
 2. In your test file, we had the following code:
     
     ```c
@@ -15,7 +17,13 @@ Completely answer the report questions below. Make sure to double check the fina
     ```
     Later in the code we only `free(arr)` but not expected. Why is this? What is the difference in where they are stored in memory?
 
+
+   `free(arr)` points to memory, and that memory won't be cleaned up automatically. The expected is just a regular local variable that it 
+   gets cleaned up automatically.
+
 3. What is the difference between the heap and stack when related to memory allocation and management?
+
+
 
 4. Take the following code:
    ```c
