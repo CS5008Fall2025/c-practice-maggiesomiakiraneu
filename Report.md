@@ -46,6 +46,9 @@ Completely answer the report questions below. Make sure to double check the fina
    }
    ```
    Would the code run correctly? Even if it does compile, what would be some potential runtime issues? After answering your thoughts, put the output of a run below (you may need to run it a few times).
+
+   I don't think so. It is returning a pointer to memory that will be invalid once the function ends.
+
    ```text
    q4test.c:10:14: warning: address of stack memory associated with local variable 'pt' returned [-Wreturn-stack-address]
    10 |      return &pt;
@@ -59,24 +62,37 @@ Completely answer the report questions below. Make sure to double check the fina
    #include <stdlib.h>
 
    typedef struct {
-     int x, y;
+   int x, y;
    } Point;
 
    Point * new_point(int x, int y) {
-     Point pt = {x, y};
-     return &pt;
+   Point *pt = malloc(sizeof(Point));  
+   if (pt != NULL) {                   
+      pt->x = x;
+      pt->y = y;
+   }
+   return pt;                          
    }
 
    int main() {
       Point* point = new_point(10, 10);
-      printf("x: %d, y: %d", point->x, point->y);
+      if (point != NULL) {             
+      printf("x: %d, y: %d\n", point->x, point->y);
+      free(point);                     
+      }
       return 0;
    }
    ```
 
 5. When you use `malloc`, where are you storing the information?
 
+   It is stored in the heap.
+
 6. Speaking about `malloc` and `calloc`, what is the difference between the two (you may need to research it!)?
+
+   malloc() allocates a block of memory of the requested size in bytes and returns a pointer to the start of that block. The allocated memory is not initialized, so reading from it before storing values results in undefined behavior, which typically appears as random or garbage values.
+
+   calloc() allocates memory and also initializes every byte to zero. Reading from this allocated memory before storing values will return zeros, since the memory has already been cleared during allocation.
 
 7. What are some common built in libraries used for C, list at least 3 and explain each one in your own words. Name a few (at least 3) functions in those libraries (hint: we used two of the most common ones in this assignment. There are many resources online that tell you functions in each library - you need to include at least 1 reference, but ideally for every library, you should have a reference to it)?
    - Example: stdlib.h - provides functions for general-purpose operations including
@@ -84,20 +100,20 @@ Completely answer the report questions below. Make sure to double check the fina
      - void * malloc(size_t) - allocates memory specified in size on the heap and returns a pointer to that location
      - void * calloc(size_t num_elements, size_t element_size) - contiguous allocation for allocating arrays with the default value of 0. Slower than malloc. 
      - int rand(void) - returns a random integer between 0 and RAND_MAX. Seed should be set before hand. 
-   1. library 1
-      * function 1
-      * function 2
-      * function 3
+   1. stdio.h – used for input, output and file handling operations
+      * printf() – prints formatted output to the console
+      * scanf() – reads formatted input from the console
+      * fopen() – opens a file for reading or writing
    
-   2. library 2
-      * function 1
-      * function 2
-      * function 3
+   2. string.h – deals with string and memory manipulation
+      * strlen() – returns the length of a string
+      * strcpy() – copies one string into another
+      * strcmp() – compares two strings
  
-   3. library 3
-      * function 1
-      * function 2
-      * function 3
+   3. math.h – provides math functions and constants
+      * sqrt() – finds the square root of a number
+      * pow() – raises a number to a power
+      * sin() – gets the sine of an angle
  
 
 8. Looking at the struct Point and Polygon, we have a mix of values on the heap, and we make ample use of pointers. Take a moment to draw out how you think that looks after `create_triangle(2,3)` is called (see an example below). The important part of the drawing it to see that not everything is stored together in memory, but in different locations! Store the image file in your github repo and link it here. You can use any program to draw it such as [drawIO](https://app.diagrams.net/), or even draw it by hand and take a picture of it. 
@@ -123,7 +139,9 @@ Add any references you use here. Use ACM style formatting, adding to the numbers
 
 1. cppreference.com Contributors. 2025. Standard library header <stdlib.h>. cppreference.com. Retrieved May 1, 2025 from https://en.cppreference.com/w/c/header/stdlib
 
-2. ...
+2. Difference Between malloc() and calloc() with Examples 2025. Retrived Sept 19, 2025 from https://www.geeksforgeeks.org/c/difference-between-malloc-and-calloc-with-examples/
+   
+3. C stdio Functions. Retrived Sept 19, 2025 from https://www.w3schools.com/c/c_ref_stdio.php
 
 ## Resource/Help: Linking to images?
 To link an image, you use the following code
