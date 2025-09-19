@@ -486,4 +486,22 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
+// int main() {
+//     Polygon *tri = create_triangle(2, 3);
+
+//     printf("Polygon struct at: %p\n", (void*)tri);
+//     printf("Polygon->points array at: %p\n", (void*)tri->points);
+
+//     for (int i = 0; i < tri->size; i++) {
+//         printf("points[%d] = %p -> (x=%d, y=%d)\n",
+//                i,
+//                (void*)tri->points[i],
+//                tri->points[i]->x,
+//                tri->points[i]->y);
+//     }
+
+//     free_polygon(tri);
+//     return 0;
+// }
+
 
