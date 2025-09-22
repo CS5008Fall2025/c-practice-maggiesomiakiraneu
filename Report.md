@@ -6,6 +6,7 @@ Completely answer the report questions below. Make sure to double check the fina
 
 
 1. What is the difference between a standard numeric type (int, float, double) and a pointer?
+   
   int holds whole numbers, float holds single precision decimals numbers, and double holds double precision decimals numbers. They all store 
   actual value. Pointer stores the memory address of another variable, and it doesn't store actual value but location in memory.
 
@@ -127,14 +128,31 @@ For both these questions, are you are free to use what you did as the last secti
 
 1. Select one technical interview question (this module or previous) from the [technical interview list](https://github.com/CS5008-khoury/Resources/blob/main/TechInterviewQuestions.md) below and answer it in a few sentences. You can use any resource you like to answer the question.
 
+
+Explain how Merge Sort works and what is its time and space complexity?
+
+
+Merge Sort is a divide-and-conquer algorithm that splits an array into halves, recursively sorts each half, and then merges them back in sorted order. It keeps dividing until each subarray has one element, which is trivially sorted. During the merge step, it compares elements from each half and builds a sorted array. Its time complexity is O(n log n) and space complexity is O(n).
+
+
 2. Select one coding question (this module or previous) from the [coding practice repository](https://github.com/CS5008-khoury/Resources/blob/main/LeetCodePractice.md) and include a c file with that code with your submission. Make sure to add comments on what you learned, and if you compared your solution with others. 
+
+
+The code is saved in file 'leetcode.c'. 
+link to the problem: https://leetcode.com/problems/merge-two-sorted-lists/?envType=list
+What I learned:
+1. Working with pointers in C takes a lot of care. I had to move them forward without breaking the links, otherwise I lose track of the list.
+2. Using interative rather than recursive is better for memory. 
+3. Edge cases like empty lists aren’t a big deal here, since the while loop condition already takes care of them.
+
+I didn't compare my code to others.
 
 ## Deeper Thinking
 In Java and Python, do you think new objects are stored on the stack or the heap? Feel free to work through your thoughts as to why it would be better to store them on the stack or heap. You should consider pass by reference, and how that is similar to pointer in your answer. Feel free to use resources, but make sure to cite them, and include the citation below using ACM format. You will note LLMs are not valid references, but they can give you directions to valid references. Make sure to use your own words. 
 
 Answer here using a paragraph (not just bullet points). 
 
-
+To my understanding, in both Java and Python, new objects are stored in the heap. The stack is mostly for temporary stuff like function calls and local variables. Anything on the stack disappears when the function ends, so objects wouldn’t last long there. The heap lets objects stick around even after a function is done. That way, different parts of the program can share and use the same objects. In Java, a variable just holds a reference to the object in the heap, and I took it very similar to a pointer in C. Passing that reference to a function means the function can work with the same object without making a copy. Python works the same way. Everything lives in a heap managed by the interpreter, and variables just point to those objects. Using the heap makes it easy to keep objects around, share them, and manage memory safely.
 
 
 ## References
@@ -145,6 +163,9 @@ Add any references you use here. Use ACM style formatting, adding to the numbers
 2. Difference Between malloc() and calloc() with Examples 2025. Retrived Sept 19, 2025 from https://www.geeksforgeeks.org/c/difference-between-malloc-and-calloc-with-examples/
    
 3. C stdio Functions. Retrived Sept 19, 2025 from https://www.w3schools.com/c/c_ref_stdio.php
+   
+4. Merge Sort 2025. Retrived Sept 19, 2025 from https://www.geeksforgeeks.org/dsa/merge-sort/
+   
 
 ## Resource/Help: Linking to images?
 To link an image, you use the following code
