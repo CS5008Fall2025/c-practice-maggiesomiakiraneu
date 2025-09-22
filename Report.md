@@ -139,7 +139,9 @@ Merge Sort is a divide-and-conquer algorithm that splits an array into halves, r
 
 
 The code is saved in file 'leetcode.c'. 
+
 link to the problem: https://leetcode.com/problems/merge-two-sorted-lists/?envType=list
+
 What I learned:
 1. Working with pointers in C takes a lot of care. I had to move them forward without breaking the links, otherwise I lose track of the list.
 2. Using interative rather than recursive is better for memory. 
