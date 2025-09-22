@@ -1,7 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/CbzfTysD)
 # Homework - C Practice - Readme
 
-Name: Maggie Li
+Name: Maggie Li 
 
 Link to Assignment on Github: (copy and paste the link to your assignment repo here)
 https://github.com/CS5008Fall2025/c-practice-maggiesomiakiraneu.git
